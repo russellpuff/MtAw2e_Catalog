@@ -1,5 +1,6 @@
 using Discord;
 using Discord.WebSocket;
+using Microsoft.Extensions.Configuration;
 
 namespace MtAw2e_Catalog
 {
@@ -10,10 +11,12 @@ namespace MtAw2e_Catalog
         public static Task Main() => new Program().MainAsync();
         public async Task MainAsync()
         {
+            var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+            var secretProvider = config.Providers.First();
+            secretProvider.TryGet("NaomiToken", out var token);
+
             client = new();
             client.Log += Log;
-            // make this secret eventually
-            var token = "";
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
 

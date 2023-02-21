@@ -12,7 +12,7 @@
             DisplayName = _disp;
             Description = _desc; 
             DiceValue = _value;
-            ParadoxPenalty = _penalty; // Must be zero or negative.
+            ParadoxPenalty = _penalty; // Must be zero or negative. Should be enforced via creation.
         }
     }
     [Serializable]

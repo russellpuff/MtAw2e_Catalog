@@ -9,8 +9,8 @@ namespace MtAw2e_Catalog
 {
     public partial class SpellForm : Form
     {
-        private ulong server;
-        private ulong channel;
+        private readonly ulong server;
+        private readonly ulong channel;
         DiscordSocketClient client;
         private List<Character> profiles;
         private Character currentCharacter;
@@ -44,13 +44,11 @@ namespace MtAw2e_Catalog
             string path = Application.StartupPath + "/defaultyantras.json";
             if (File.Exists(path))
             {
-                using (StreamReader sr = new(path))
-                {
+                using StreamReader sr = new(path);
 #pragma warning disable CS8601
-                    var json = sr.ReadToEnd();
-                    defaultYantras = JsonConvert.DeserializeObject<List<Yantra>>(json);
+                var json = sr.ReadToEnd();
+                defaultYantras = JsonConvert.DeserializeObject<List<Yantra>>(json);
 #pragma warning restore CS8601
-                }
             }
             if (defaultYantras == null) { defaultYantras = new(); this.Close(); }
             SetupDefaults();
@@ -134,14 +132,12 @@ namespace MtAw2e_Catalog
             {
                 try
                 {
-                    using (StreamReader sr = new(file))
-                    {
-                        var json = sr.ReadToEnd();
-                        Character? ch = JsonConvert.DeserializeObject<Character>(json);
-                        if (ch == null) { throw new NullReferenceException(); }
-                        profiles.Add(ch);
-                        sfProfileComboBox.Items.Add(ch.Name);
-                    }
+                    using StreamReader sr = new(file);
+                    var json = sr.ReadToEnd();
+                    Character? ch = JsonConvert.DeserializeObject<Character>(json);
+                    if (ch == null) { throw new NullReferenceException(); }
+                    profiles.Add(ch);
+                    sfProfileComboBox.Items.Add(ch.Name);
                 } catch {
                     string msg = file.ToString() + " was corrupted and could not be loaded.";
                     MessageBox.Show(msg, "Load error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -228,7 +224,7 @@ namespace MtAw2e_Catalog
         }
         private void SaveProfileButton_Click(object sender, EventArgs e)
         {
-            string foo = currentCharacter.Name;
+            string charName = currentCharacter.Name;
 
             currentCharacter.Gnosis = (int)sfGnosisNumUpDown.Value;
             currentCharacter.Wisdom = (int)sfWisdomNumUpDown.Value;
@@ -257,7 +253,7 @@ namespace MtAw2e_Catalog
                 currentCharacter.RulingArcana[i] = WhatArcana(bar, true);
             }
  
-            string path = Application.StartupPath + "/profiles/" + foo.Replace(' ', '_') + ".json";
+            string path = Application.StartupPath + "/profiles/" + charName.Replace(' ', '_') + ".json";
             if (File.Exists(path)) { File.Delete(path); }
             using (StreamWriter sw = new(path))
             {
@@ -271,7 +267,7 @@ namespace MtAw2e_Catalog
 
             sfProfileComboBox.Items.Clear();
             LoadProfiles();
-            int idx = sfProfileComboBox.Items.IndexOf(foo);
+            int idx = sfProfileComboBox.Items.IndexOf(charName);
             sfProfileComboBox.SelectedIndex = idx;
         }
         private void CalculateFreeReach()

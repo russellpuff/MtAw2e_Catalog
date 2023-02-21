@@ -9,8 +9,8 @@ namespace MtAw2e_Catalog
     {
         private bool unsaved, deactivateEvent;
         private DiscordSocketClient client;
-        private ulong server;
-        private ulong channel;
+        private readonly ulong server;
+        private readonly ulong channel;
         private List<Spell> spellList;
         private int listIndex = -1;
         public MainForm(ref DiscordSocketClient c, ulong _server, ulong _channel)
