@@ -198,7 +198,6 @@
             this.sfWisdomNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.sfWisdomLabel = new System.Windows.Forms.Label();
             this.sfProfileLabel = new System.Windows.Forms.Label();
-            this.sfDebugCastButton = new System.Windows.Forms.Button();
             this.sfBackTable.SuspendLayout();
             this.sfArcanaTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sfTimeNumUpDown)).BeginInit();
@@ -263,7 +262,6 @@
             this.sfBackTable.Controls.Add(this.sfSpellNameLabel, 4, 0);
             this.sfBackTable.Controls.Add(this.sfSpellDescriptionTextBox, 5, 2);
             this.sfBackTable.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.sfBackTable.Controls.Add(this.sfDebugCastButton, 5, 1);
             this.sfBackTable.Location = new System.Drawing.Point(12, 12);
             this.sfBackTable.Name = "sfBackTable";
             this.sfBackTable.RowCount = 6;
@@ -2233,6 +2231,7 @@
             this.sfWithstandLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.sfWithstandLabel.AutoSize = true;
             this.sfWithstandLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sfWithstandLabel.ForeColor = System.Drawing.Color.Black;
             this.sfWithstandLabel.Location = new System.Drawing.Point(4, 3);
             this.sfWithstandLabel.Name = "sfWithstandLabel";
             this.sfWithstandLabel.Size = new System.Drawing.Size(81, 21);
@@ -2525,6 +2524,7 @@
             this.sfSpellDescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sfSpellDescriptionTextBox.Size = new System.Drawing.Size(176, 674);
             this.sfSpellDescriptionTextBox.TabIndex = 54;
+            this.sfSpellDescriptionTextBox.DoubleClick += new System.EventHandler(this.SpellDescription_DoubleClick);
             // 
             // tableLayoutPanel1
             // 
@@ -2582,16 +2582,6 @@
             this.sfProfileLabel.Size = new System.Drawing.Size(55, 21);
             this.sfProfileLabel.TabIndex = 21;
             this.sfProfileLabel.Text = "Profile";
-            // 
-            // sfDebugCastButton
-            // 
-            this.sfDebugCastButton.Location = new System.Drawing.Point(884, 51);
-            this.sfDebugCastButton.Name = "sfDebugCastButton";
-            this.sfDebugCastButton.Size = new System.Drawing.Size(176, 23);
-            this.sfDebugCastButton.TabIndex = 56;
-            this.sfDebugCastButton.Text = "DEBUG CAST SPELL";
-            this.sfDebugCastButton.UseVisualStyleBackColor = true;
-            this.sfDebugCastButton.Click += new System.EventHandler(this.sfDebugCastButton_Click);
             // 
             // SpellForm
             // 
@@ -2832,6 +2822,5 @@
         private TableLayoutPanel tableLayoutPanel1;
         private NumericUpDown sfWisdomNumUpDown;
         private Label sfWisdomLabel;
-        private Button sfDebugCastButton;
     }
 }

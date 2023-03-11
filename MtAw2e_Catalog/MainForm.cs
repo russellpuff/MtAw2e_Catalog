@@ -1,5 +1,4 @@
 using Discord;
-using Discord.WebSocket;
 using Newtonsoft.Json;
 using Color = Discord.Color;
 
@@ -8,20 +7,19 @@ namespace MtAw2e_Catalog
     public partial class MainForm : Form
     {
         private bool unsaved, deactivateEvent;
-        private DiscordSocketClient client;
         private readonly ulong server;
         private readonly ulong channel;
         private List<Spell> spellList;
         private int listIndex = -1;
-        public MainForm(ref DiscordSocketClient c, ulong _server, ulong _channel)
+        public MainForm(ulong _server, ulong _channel)
         {
             server = _server;
             channel = _channel;
             InitializeComponent();
-            client = c;
             spellList = new List<Spell>();
             LoadSpells();
-            mfPracticeComboBox.SelectedIndex = mfFactorComboBox.SelectedIndex = 0;
+            mfPracticeComboBox.SelectedIndex = mfFactorComboBox.SelectedIndex = 
+                mfArcanaSelectorComboBox.SelectedIndex = mfDotsSelectorComboBox.SelectedIndex = 0;
             unsaved = deactivateEvent = false;
         }
 
@@ -162,8 +160,14 @@ namespace MtAw2e_Catalog
             mfSpellListBox.Items.Clear();
             foreach (Spell s in spellList)
             {
-                string info = s.Name + " " + s.Arcana;
-                mfSpellListBox.Items.Add(info);
+                string[] arcana = s.Arcana.Split('+');
+                bool validateArcana = arcana[0].Contains(mfArcanaSelectorComboBox.Text) || mfArcanaSelectorComboBox.SelectedIndex == 0;
+                bool validateDots = arcana[0].Count(c => c == '•') == mfDotsSelectorComboBox.Text.Count(c => c == '•') || mfDotsSelectorComboBox.SelectedIndex == 0;
+                if (validateArcana && validateDots)   
+                {
+                    string info = s.Name + " " + s.Arcana;
+                    mfSpellListBox.Items.Add(info);
+                }
             }
         }
 
@@ -201,7 +205,9 @@ namespace MtAw2e_Catalog
             embedSend.WithDescription(send);
             embedSend.WithColor(ChooseEmbedColor(mfArcanaTextBox.Text));
 
-            client.GetGuild(server).GetTextChannel(channel).SendMessageAsync(embed: embedSend.Build());
+            using (EmbedSender es = new(embedSend, server, channel))
+            { es.SendEmbed(); }
+            
         }
 
         private static Color ChooseEmbedColor(string arcana)
@@ -239,9 +245,12 @@ namespace MtAw2e_Catalog
                 MessageBox.Show(msg, "Spell error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            SpellForm sf = new(s, ref client, server, channel);
+            SpellForm sf = new(s, server, channel);
             sf.ShowDialog();
         }
+
+        private void SpellSearchComboBoxes_SelectedIndexChanged(object sender, EventArgs e)
+        { RefreshList(); }
 
         private void SpellListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -260,37 +269,46 @@ namespace MtAw2e_Catalog
                 }
             }
 
-            listIndex = mfSpellListBox.SelectedIndex;
-            mfNameTextBox.Text = spellList[listIndex].Name;
-            mfArcanaTextBox.Text = spellList[listIndex].Arcana;
-            mfSpellDescriptionTextBox.Text = spellList[listIndex].Description;
-            mfPracticeComboBox.Text = spellList[listIndex].Practice;
-            mfFactorComboBox.Text = spellList[listIndex].PrimaryFactor;
-            mfWithstandComboBox.Text = spellList[listIndex].Withstand;
-            mfCostTextBox.Text = spellList[listIndex].Cost;
+            string sp = mfSpellListBox.SelectedItems[0].ToString() ?? "";
+            Spell? selectedSpell = spellList.Find(s => sp.Contains(s.Name));
+            if (selectedSpell == null) 
+            {
+
+                string msg = "Error loading spell. A match wasn't found in spells.json.";
+                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            mfNameTextBox.Text = selectedSpell.Name;
+            mfArcanaTextBox.Text = selectedSpell.Arcana;
+            mfSpellDescriptionTextBox.Text = selectedSpell.Description;
+            mfPracticeComboBox.Text = selectedSpell.Practice;
+            mfFactorComboBox.Text = selectedSpell.PrimaryFactor;
+            mfWithstandComboBox.Text = selectedSpell.Withstand;
+            mfCostTextBox.Text = selectedSpell.Cost;
 
             mfAddonReqTextBox1.Text = mfAddonReqTextBox2.Text = mfAddonReqTextBox3.Text = mfAddonReqTextBox4.Text =
                mfAddonEffectTextBox1.Text = mfAddonEffectTextBox2.Text = mfAddonEffectTextBox3.Text = mfAddonEffectTextBox4.Text = "";
 
-            if (spellList[listIndex].AddOns.Any())
+            if (selectedSpell.AddOns.Any())
             {
-                mfAddonReqTextBox1.Text = spellList[listIndex].AddOns[0].Requirement;
-                mfAddonEffectTextBox1.Text = spellList[listIndex].AddOns[0].Effect;
+                mfAddonReqTextBox1.Text = selectedSpell.AddOns[0].Requirement;
+                mfAddonEffectTextBox1.Text = selectedSpell.AddOns[0].Effect;
 
-                if (spellList[listIndex].AddOns.Count > 1)
+                if (selectedSpell.AddOns.Count > 1)
                 {
-                    mfAddonReqTextBox2.Text = spellList[listIndex].AddOns[1].Requirement;
-                    mfAddonEffectTextBox2.Text = spellList[listIndex].AddOns[1].Effect;
+                    mfAddonReqTextBox2.Text = selectedSpell.AddOns[1].Requirement;
+                    mfAddonEffectTextBox2.Text = selectedSpell.AddOns[1].Effect;
                 }
-                if (spellList[listIndex].AddOns.Count > 2)
+                if (selectedSpell.AddOns.Count > 2)
                 {
-                    mfAddonReqTextBox3.Text = spellList[listIndex].AddOns[2].Requirement;
-                    mfAddonEffectTextBox3.Text = spellList[listIndex].AddOns[2].Effect;
+                    mfAddonReqTextBox3.Text = selectedSpell.AddOns[2].Requirement;
+                    mfAddonEffectTextBox3.Text = selectedSpell.AddOns[2].Effect;
                 }
-                if (spellList[listIndex].AddOns.Count > 3)
+                if (selectedSpell.AddOns.Count > 3)
                 {
-                    mfAddonReqTextBox4.Text = spellList[listIndex].AddOns[3].Requirement;
-                    mfAddonEffectTextBox4.Text = spellList[listIndex].AddOns[3].Effect;
+                    mfAddonReqTextBox4.Text = selectedSpell.AddOns[3].Requirement;
+                    mfAddonEffectTextBox4.Text = selectedSpell.AddOns[3].Effect;
                 }
             }
 

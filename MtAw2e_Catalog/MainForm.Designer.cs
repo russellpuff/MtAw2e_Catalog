@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.mfTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.mfDotsSelectorComboBox = new System.Windows.Forms.ComboBox();
+            this.mfCastSpellButton = new System.Windows.Forms.Button();
             this.mfArcanaTextBox = new System.Windows.Forms.TextBox();
             this.mfSpellNameLabel = new System.Windows.Forms.Label();
             this.mfNameTextBox = new System.Windows.Forms.TextBox();
@@ -59,7 +61,7 @@
             this.mfCostLabel = new System.Windows.Forms.Label();
             this.mfCostTextBox = new System.Windows.Forms.TextBox();
             this.mfWithstandComboBox = new System.Windows.Forms.ComboBox();
-            this.mfCastSpellButton = new System.Windows.Forms.Button();
+            this.mfArcanaSelectorComboBox = new System.Windows.Forms.ComboBox();
             this.mfTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +74,7 @@
             this.mfTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.61682F));
             this.mfTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.mfTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.mfTableLayout.Controls.Add(this.mfDotsSelectorComboBox, 4, 2);
             this.mfTableLayout.Controls.Add(this.mfCastSpellButton, 5, 0);
             this.mfTableLayout.Controls.Add(this.mfArcanaTextBox, 2, 1);
             this.mfTableLayout.Controls.Add(this.mfSpellNameLabel, 0, 0);
@@ -88,7 +91,7 @@
             this.mfTableLayout.Controls.Add(this.mfAddonEffectLabel, 2, 6);
             this.mfTableLayout.Controls.Add(this.mfSpellDescriptionTextBox, 0, 5);
             this.mfTableLayout.Controls.Add(this.mfSpellBodyLabel, 0, 4);
-            this.mfTableLayout.Controls.Add(this.mfSpellListBox, 4, 1);
+            this.mfTableLayout.Controls.Add(this.mfSpellListBox, 4, 3);
             this.mfTableLayout.Controls.Add(this.mfDeleteSpellButton, 5, 9);
             this.mfTableLayout.Controls.Add(this.mfSendSpellButton, 5, 10);
             this.mfTableLayout.Controls.Add(this.mfPracticeLabel, 0, 2);
@@ -103,6 +106,7 @@
             this.mfTableLayout.Controls.Add(this.mfCostLabel, 3, 2);
             this.mfTableLayout.Controls.Add(this.mfCostTextBox, 3, 3);
             this.mfTableLayout.Controls.Add(this.mfWithstandComboBox, 2, 3);
+            this.mfTableLayout.Controls.Add(this.mfArcanaSelectorComboBox, 4, 1);
             this.mfTableLayout.Location = new System.Drawing.Point(12, 12);
             this.mfTableLayout.Name = "mfTableLayout";
             this.mfTableLayout.RowCount = 12;
@@ -120,6 +124,35 @@
             this.mfTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mfTableLayout.Size = new System.Drawing.Size(642, 544);
             this.mfTableLayout.TabIndex = 0;
+            // 
+            // mfDotsSelectorComboBox
+            // 
+            this.mfTableLayout.SetColumnSpan(this.mfDotsSelectorComboBox, 2);
+            this.mfDotsSelectorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mfDotsSelectorComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mfDotsSelectorComboBox.FormattingEnabled = true;
+            this.mfDotsSelectorComboBox.Items.AddRange(new object[] {
+            "Any Dots",
+            "Initiate (•)",
+            "Apprentice (••)",
+            "Disciple (•••)",
+            "Adapt (••••)",
+            "Master (•••••)"});
+            this.mfDotsSelectorComboBox.Location = new System.Drawing.Point(387, 73);
+            this.mfDotsSelectorComboBox.Name = "mfDotsSelectorComboBox";
+            this.mfDotsSelectorComboBox.Size = new System.Drawing.Size(252, 29);
+            this.mfDotsSelectorComboBox.TabIndex = 33;
+            this.mfDotsSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.SpellSearchComboBoxes_SelectedIndexChanged);
+            // 
+            // mfCastSpellButton
+            // 
+            this.mfCastSpellButton.Location = new System.Drawing.Point(515, 3);
+            this.mfCastSpellButton.Name = "mfCastSpellButton";
+            this.mfCastSpellButton.Size = new System.Drawing.Size(124, 29);
+            this.mfCastSpellButton.TabIndex = 31;
+            this.mfCastSpellButton.Text = "Cast Spell";
+            this.mfCastSpellButton.UseVisualStyleBackColor = true;
+            this.mfCastSpellButton.Click += new System.EventHandler(this.CastSpellButton_Click);
             // 
             // mfArcanaTextBox
             // 
@@ -284,10 +317,10 @@
             this.mfSpellListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mfSpellListBox.FormattingEnabled = true;
             this.mfSpellListBox.ItemHeight = 15;
-            this.mfSpellListBox.Location = new System.Drawing.Point(387, 38);
+            this.mfSpellListBox.Location = new System.Drawing.Point(387, 108);
             this.mfSpellListBox.Name = "mfSpellListBox";
-            this.mfTableLayout.SetRowSpan(this.mfSpellListBox, 6);
-            this.mfSpellListBox.Size = new System.Drawing.Size(252, 363);
+            this.mfTableLayout.SetRowSpan(this.mfSpellListBox, 4);
+            this.mfSpellListBox.Size = new System.Drawing.Size(252, 293);
             this.mfSpellListBox.TabIndex = 10;
             this.mfSpellListBox.SelectedIndexChanged += new System.EventHandler(this.SpellListBox_SelectedIndexChanged);
             // 
@@ -464,15 +497,29 @@
             this.mfWithstandComboBox.Size = new System.Drawing.Size(102, 25);
             this.mfWithstandComboBox.TabIndex = 30;
             // 
-            // mfCastSpellButton
+            // mfArcanaSelectorComboBox
             // 
-            this.mfCastSpellButton.Location = new System.Drawing.Point(515, 3);
-            this.mfCastSpellButton.Name = "mfCastSpellButton";
-            this.mfCastSpellButton.Size = new System.Drawing.Size(124, 29);
-            this.mfCastSpellButton.TabIndex = 31;
-            this.mfCastSpellButton.Text = "Cast Spell";
-            this.mfCastSpellButton.UseVisualStyleBackColor = true;
-            this.mfCastSpellButton.Click += new System.EventHandler(this.CastSpellButton_Click);
+            this.mfTableLayout.SetColumnSpan(this.mfArcanaSelectorComboBox, 2);
+            this.mfArcanaSelectorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mfArcanaSelectorComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mfArcanaSelectorComboBox.FormattingEnabled = true;
+            this.mfArcanaSelectorComboBox.Items.AddRange(new object[] {
+            "Any Arcana",
+            "Death",
+            "Fate",
+            "Forces",
+            "Life",
+            "Matter",
+            "Mind",
+            "Prime",
+            "Space",
+            "Spirit",
+            "Time"});
+            this.mfArcanaSelectorComboBox.Location = new System.Drawing.Point(387, 38);
+            this.mfArcanaSelectorComboBox.Name = "mfArcanaSelectorComboBox";
+            this.mfArcanaSelectorComboBox.Size = new System.Drawing.Size(252, 29);
+            this.mfArcanaSelectorComboBox.TabIndex = 32;
+            this.mfArcanaSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.SpellSearchComboBoxes_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -526,5 +573,7 @@
         private TextBox mfCostTextBox;
         private ComboBox mfWithstandComboBox;
         private Button mfCastSpellButton;
+        private ComboBox mfDotsSelectorComboBox;
+        private ComboBox mfArcanaSelectorComboBox;
     }
 }

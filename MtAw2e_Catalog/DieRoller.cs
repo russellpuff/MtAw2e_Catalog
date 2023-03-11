@@ -4,11 +4,11 @@ namespace CofDDice
 {
     public class DieRoller
     {
-        public DieRoller(int d, bool r, int RA)
+        public DieRoller(int _diceNum, bool _isRote, int _rollAgain)
         {
-            dice = d;
-            rote = r;
-            rollAgain = (Again)RA;
+            dice = _diceNum;
+            rote = _isRote;
+            rollAgain = (Again)_rollAgain;
             chance = (dice <= 0);
             if (chance) { dice = 1; }
         }

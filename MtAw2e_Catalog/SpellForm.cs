@@ -3,7 +3,6 @@ using CofDDice;
 using System.Diagnostics.CodeAnalysis;
 using Discord;
 using Color = System.Drawing.Color;
-using Discord.WebSocket;
 
 namespace MtAw2e_Catalog
 {
@@ -11,7 +10,6 @@ namespace MtAw2e_Catalog
     {
         private readonly ulong server;
         private readonly ulong channel;
-        DiscordSocketClient client;
         private List<Character> profiles;
         private Character currentCharacter;
         private List<Yantra> defaultYantras;
@@ -34,11 +32,10 @@ namespace MtAw2e_Catalog
         private int paradoxTotal; // Before paradox penalties
         private int paradoxActual; // After paradox penalties
         #region Setup
-        public SpellForm(Spell _spell, ref DiscordSocketClient _client, ulong _server, ulong _channel)
+        public SpellForm(Spell _spell, ulong _server, ulong _channel)
         {
             InitializeComponent();
             spell = _spell;
-            client = _client;
             server = _server;
             channel = _channel;
             string path = Application.StartupPath + "/defaultyantras.json";
@@ -59,6 +56,7 @@ namespace MtAw2e_Catalog
             pfs.Find(r => r.Name.Contains(spell.PrimaryFactor)).Checked = true;
 #nullable enable
             saveOK = true;
+            sfCastNormalButton.Enabled = sfCastAimedButton.Enabled = false; // No yantras selected by default, force disable buttons on form load. 
         }
 
         // Method to set default selections when constructor loads. 
@@ -71,7 +69,6 @@ namespace MtAw2e_Catalog
             { desc += "Withstand: " + spell.Withstand + Environment.NewLine + Environment.NewLine; }
             desc += spell.Description;
             sfSpellDescriptionTextBox.Text = desc;
-
 
             reaches = mana = dice = paradoxTotal = paradoxActual = 0;
             sfTouchRangeRadio.Checked = true;
@@ -514,11 +511,14 @@ namespace MtAw2e_Catalog
                 else if (spl.successes == 0) { result += "\n\nIt failed."; }
 
                 spellResult.WithDescription(result);
-                spellResult.WithColor(ChooseEmbedColor(spell.Arcana));
-                await client.GetGuild(server).GetTextChannel(channel).SendMessageAsync(embed: spellResult.Build());
+                spellResult.WithColor(new Discord.Color(0, 0, 0));
+                using (EmbedSender es = new(spellResult, server, channel))
+                { es.SendEmbed(); }
                 await Task.Delay(1000);
-                if (spl.successes > 0) { 
-                    await client.GetGuild(server).GetTextChannel(channel).SendMessageAsync(embed: SendSpellToChat().Build()); 
+
+                if (spl.successes > 0) {
+                    using (EmbedSender es = new(SendSpellToChat(), server, channel))
+                    { es.SendEmbed(); }
                     await Task.Delay(1000); 
                 }
             }
@@ -553,7 +553,9 @@ namespace MtAw2e_Catalog
             }
 
             embedParadox.WithDescription(pResult);
-            await client.GetGuild(server).GetTextChannel(channel).SendMessageAsync(embed: embedParadox.Build());
+            embedParadox.WithColor(Discord.Color.Default);
+            using (EmbedSender es = new(embedParadox, server, channel))
+            { es.SendEmbed(); }
         }
 
         private bool AimSpell()
@@ -575,7 +577,8 @@ namespace MtAw2e_Catalog
 
         private async void SendAimToChat(EmbedBuilder aimSpell)
         {
-            await client.GetGuild(server).GetTextChannel(channel).SendMessageAsync(embed: aimSpell.Build());
+            using (EmbedSender es = new(aimSpell, server, channel))
+            { es.SendEmbed(); }
             await Task.Delay(1000);
         }
 
@@ -748,6 +751,7 @@ namespace MtAw2e_Catalog
             }
             RefreshLabels();
         }
+
         private void FactorRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radio = (RadioButton)sender;
@@ -877,7 +881,7 @@ namespace MtAw2e_Catalog
         { 
             if (!disableEvents) 
             RefreshLabels();
-            sfCastAimedButton.Enabled = sfTouchRangeRadio.Checked;
+            EnableDisableCastButtons();
         }
 
         private void LeftsideNumUpDown_ValueChanged(object sender, EventArgs e)
@@ -947,9 +951,9 @@ namespace MtAw2e_Catalog
         }
         #endregion
 
-        private void sfDebugCastButton_Click(object sender, EventArgs e)
+        private void SpellDescription_DoubleClick(object sender, EventArgs e)
         {
-            sfCastAimedButton.Enabled = sfCastNormalButton.Enabled = true;
+            MessageBox.Show(sfSpellDescriptionTextBox.Text, "Description", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
