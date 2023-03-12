@@ -16,6 +16,10 @@ namespace MtAw2e_Catalog
             server = _server;
             channel = _channel;
             InitializeComponent();
+
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+
             spellList = new List<Spell>();
             LoadSpells();
             mfPracticeComboBox.SelectedIndex = mfFactorComboBox.SelectedIndex = 

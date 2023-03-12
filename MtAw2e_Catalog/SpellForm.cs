@@ -35,6 +35,10 @@ namespace MtAw2e_Catalog
         public SpellForm(Spell _spell, ulong _server, ulong _channel)
         {
             InitializeComponent();
+
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+
             spell = _spell;
             server = _server;
             channel = _channel;

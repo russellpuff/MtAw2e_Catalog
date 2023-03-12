@@ -16,6 +16,8 @@ namespace MtAw2e_Catalog
         public YantraForm(ref List<Yantra> _c, ref List<Yantra> _d)
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Font;
             customYantras = _c;
 
             foreach (Yantra yantra in _d)

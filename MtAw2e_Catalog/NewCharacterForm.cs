@@ -6,6 +6,8 @@
         public NewCharacterForm()
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+            this.AutoScaleMode = AutoScaleMode.Font;
         }
 
         private void CreateButton_Click(object sender, EventArgs e)

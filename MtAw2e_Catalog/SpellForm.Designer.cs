@@ -239,6 +239,9 @@
             // 
             // sfBackTable
             // 
+            this.sfBackTable.AutoScroll = true;
+            this.sfBackTable.AutoSize = true;
+            this.sfBackTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sfBackTable.ColumnCount = 6;
             this.sfBackTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
             this.sfBackTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -262,7 +265,9 @@
             this.sfBackTable.Controls.Add(this.sfSpellNameLabel, 4, 0);
             this.sfBackTable.Controls.Add(this.sfSpellDescriptionTextBox, 5, 2);
             this.sfBackTable.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.sfBackTable.Location = new System.Drawing.Point(12, 12);
+            this.sfBackTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sfBackTable.Location = new System.Drawing.Point(0, 0);
+            this.sfBackTable.MinimumSize = new System.Drawing.Size(1056, 763);
             this.sfBackTable.Name = "sfBackTable";
             this.sfBackTable.RowCount = 6;
             this.sfBackTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
@@ -272,7 +277,7 @@
             this.sfBackTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.sfBackTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.sfBackTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.sfBackTable.Size = new System.Drawing.Size(1063, 760);
+            this.sfBackTable.Size = new System.Drawing.Size(1056, 763);
             this.sfBackTable.TabIndex = 0;
             // 
             // sfGnosisLabel
@@ -1038,7 +1043,7 @@
             this.sfRightTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 219F));
             this.sfRightTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 168F));
             this.sfRightTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.sfRightTable.Size = new System.Drawing.Size(603, 672);
+            this.sfRightTable.Size = new System.Drawing.Size(603, 675);
             this.sfRightTable.TabIndex = 8;
             // 
             // sfASTable
@@ -1926,7 +1931,7 @@
             this.sfCastasTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.sfCastasTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.sfCastasTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.sfCastasTable.Size = new System.Drawing.Size(244, 90);
+            this.sfCastasTable.Size = new System.Drawing.Size(244, 93);
             this.sfCastasTable.TabIndex = 5;
             // 
             // sfCastImprovisedRadio
@@ -2025,7 +2030,7 @@
             this.sfLowerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.sfLowerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.sfLowerTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.sfLowerTable.Size = new System.Drawing.Size(347, 90);
+            this.sfLowerTable.Size = new System.Drawing.Size(347, 93);
             this.sfLowerTable.TabIndex = 6;
             // 
             // sfAimedDefNumUpDown
@@ -2506,7 +2511,7 @@
             this.sfSpellNameLabel.AutoSize = true;
             this.sfBackTable.SetColumnSpan(this.sfSpellNameLabel, 2);
             this.sfSpellNameLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.sfSpellNameLabel.Location = new System.Drawing.Point(797, 1);
+            this.sfSpellNameLabel.Location = new System.Drawing.Point(790, 1);
             this.sfSpellNameLabel.Name = "sfSpellNameLabel";
             this.sfSpellNameLabel.Size = new System.Drawing.Size(263, 45);
             this.sfSpellNameLabel.TabIndex = 0;
@@ -2516,13 +2521,14 @@
             // sfSpellDescriptionTextBox
             // 
             this.sfSpellDescriptionTextBox.AcceptsReturn = true;
+            this.sfSpellDescriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sfSpellDescriptionTextBox.Location = new System.Drawing.Point(884, 83);
             this.sfSpellDescriptionTextBox.Multiline = true;
             this.sfSpellDescriptionTextBox.Name = "sfSpellDescriptionTextBox";
             this.sfSpellDescriptionTextBox.ReadOnly = true;
             this.sfBackTable.SetRowSpan(this.sfSpellDescriptionTextBox, 4);
             this.sfSpellDescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sfSpellDescriptionTextBox.Size = new System.Drawing.Size(176, 674);
+            this.sfSpellDescriptionTextBox.Size = new System.Drawing.Size(169, 677);
             this.sfSpellDescriptionTextBox.TabIndex = 54;
             this.sfSpellDescriptionTextBox.DoubleClick += new System.EventHandler(this.SpellDescription_DoubleClick);
             // 
@@ -2585,12 +2591,13 @@
             // 
             // SpellForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 776);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScroll = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1056, 763);
             this.Controls.Add(this.sfBackTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.Name = "SpellForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SpellForm";
@@ -2647,6 +2654,7 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sfWisdomNumUpDown)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
