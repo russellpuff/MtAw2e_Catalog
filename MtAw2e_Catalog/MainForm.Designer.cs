@@ -62,6 +62,7 @@
             this.mfCostTextBox = new System.Windows.Forms.TextBox();
             this.mfWithstandComboBox = new System.Windows.Forms.ComboBox();
             this.mfArcanaSelectorComboBox = new System.Windows.Forms.ComboBox();
+            this.mfSecretGUIDLabel = new System.Windows.Forms.Label();
             this.mfTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,7 +137,7 @@
             "Initiate (•)",
             "Apprentice (••)",
             "Disciple (•••)",
-            "Adapt (••••)",
+            "Adept (••••)",
             "Master (•••••)"});
             this.mfDotsSelectorComboBox.Location = new System.Drawing.Point(387, 73);
             this.mfDotsSelectorComboBox.Name = "mfDotsSelectorComboBox";
@@ -521,12 +522,23 @@
             this.mfArcanaSelectorComboBox.TabIndex = 32;
             this.mfArcanaSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.SpellSearchComboBoxes_SelectedIndexChanged);
             // 
+            // mfSecretGUIDLabel
+            // 
+            this.mfSecretGUIDLabel.AutoSize = true;
+            this.mfSecretGUIDLabel.ForeColor = System.Drawing.Color.Transparent;
+            this.mfSecretGUIDLabel.Location = new System.Drawing.Point(50, 300);
+            this.mfSecretGUIDLabel.Name = "mfSecretGUIDLabel";
+            this.mfSecretGUIDLabel.Size = new System.Drawing.Size(38, 15);
+            this.mfSecretGUIDLabel.TabIndex = 34;
+            this.mfSecretGUIDLabel.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(666, 568);
             this.Controls.Add(this.mfTableLayout);
+            this.Controls.Add(this.mfSecretGUIDLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -536,6 +548,7 @@
             this.mfTableLayout.ResumeLayout(false);
             this.mfTableLayout.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -575,5 +588,6 @@
         private Button mfCastSpellButton;
         private ComboBox mfDotsSelectorComboBox;
         private ComboBox mfArcanaSelectorComboBox;
+        private Label mfSecretGUIDLabel;
     }
 }

@@ -18,10 +18,11 @@
         public string Withstand;
         public string Cost;
         public List<AddOn> AddOns;
+        public string guid;
 
         public Spell()
         {
-            Name = Arcana = Description = Practice = PrimaryFactor = Withstand = Cost = "";
+            Name = Arcana = Description = Practice = PrimaryFactor = Withstand = Cost = guid = "";
             AddOns = new();
         }
     }

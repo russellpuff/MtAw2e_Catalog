@@ -10,7 +10,7 @@ namespace MtAw2e_Catalog
         private readonly ulong server;
         private readonly ulong channel;
         private List<Spell> spellList;
-        private int listIndex = -1;
+
         public MainForm(ulong _server, ulong _channel)
         {
             server = _server;
@@ -235,7 +235,20 @@ namespace MtAw2e_Catalog
 
         private void DeleteSpellButton_Click(object sender, EventArgs e)
         {
-            spellList.RemoveAt(listIndex);
+            var removedSpell = spellList.FirstOrDefault(s => s.guid == mfSecretGUIDLabel.Text);
+            if (removedSpell == null) 
+            {
+                string msg = "Couldn't find the spell to remove in spells.json. If this issue persists, you will have to" +
+                    " remove it manually by editing spells.json.";
+                MessageBox.Show(msg, "Spell delete error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            } else
+            {
+                string msg = $"{removedSpell.Name} will be permanently deleted. Are you sure?";
+                var result = MessageBox.Show(msg, "Confirm delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No) { return; }
+            }
+            spellList.Remove(removedSpell);
             RefreshList();
         }
 
@@ -262,22 +275,45 @@ namespace MtAw2e_Catalog
             if (unsaved)
             {
                 var result = MessageBox.Show("You have unsaved changes. Continue?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No)
-                {
-                    if (listIndex != -1)
-                    {
-                        deactivateEvent = true;
-                        mfSpellListBox.SelectedIndex = listIndex;
-                    }
-                    return;
-                }
+                if (result == DialogResult.No) { return; }
             }
 
-            string sp = mfSpellListBox.SelectedItems[0].ToString() ?? "";
-            Spell? selectedSpell = spellList.Find(s => sp.Contains(s.Name));
+#nullable disable
+            if (mfSpellListBox.SelectedIndex == -1) { return; }
+            // Get name of selected spell. Split off the arcana, requires the trailing space to be trimmed as well. 
+            string targetName = mfSpellListBox.SelectedItem.ToString().Split('(')[0]
+                .Remove(mfSpellListBox.SelectedItem.ToString().Split('(')[0].Length - 1) ?? "";
+            string selectedItem = mfSpellListBox.SelectedItem.ToString();
+            // Creates a list of all items in the listbox that share the same name, specifically, it finds their index.
+            List<int> matchingItems = mfSpellListBox.Items.Cast<string>()
+                                             .Select((item, index) => new { Item = item, Index = index })
+                                             .Where(x => x.Item == selectedItem)
+                                             .Select(x => x.Index)
+                                             .ToList();
+            // Creates another list of all matching spells in the spellList, and their indexes.
+            var matchingSpells = spellList.Where(p => p.Name == targetName).ToList();
+            var matchIndexes = matchingSpells.Select(i => spellList.IndexOf(i)).ToList();
+#nullable enable
+            // Make sure the two lists of indexes are the same length, otherwise the mismatch causes problems. 
+            if (matchingItems.Count != matchingSpells.Count)
+            {
+                string msg = "Mismatch between list items and spells.json. Could not load the spell due to duplicates with the " +
+                    "same name. In order to fix this problem, the duplicate spells must be erased or renamed manually by editing" +
+                    "spells.json.";
+                MessageBox.Show(msg, "Spell load error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            /* 
+             * This is a series of index fuckery. Since the sublists have the same length, their indexes will both point
+             * to the same item. By using the matched index from the ListBox selected item as an index for the matching
+             * spells' indexes list, you can grab the specific index in the main spellList that points to the spell being
+             * selected, regardless of duplicates. 
+            */
+            int matchListIndex = matchingItems.First(m => m == mfSpellListBox.SelectedIndex);
+            Spell selectedSpell = spellList[matchIndexes[matchingItems.IndexOf(matchListIndex)]];
+
             if (selectedSpell == null) 
             {
-
                 string msg = "Error loading spell. A match wasn't found in spells.json.";
                 MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -290,6 +326,7 @@ namespace MtAw2e_Catalog
             mfFactorComboBox.Text = selectedSpell.PrimaryFactor;
             mfWithstandComboBox.Text = selectedSpell.Withstand;
             mfCostTextBox.Text = selectedSpell.Cost;
+            mfSecretGUIDLabel.Text = selectedSpell.guid;
 
             mfAddonReqTextBox1.Text = mfAddonReqTextBox2.Text = mfAddonReqTextBox3.Text = mfAddonReqTextBox4.Text =
                mfAddonEffectTextBox1.Text = mfAddonEffectTextBox2.Text = mfAddonEffectTextBox3.Text = mfAddonEffectTextBox4.Text = "";

@@ -43,12 +43,15 @@ namespace MtAw2e_Catalog
                 if (!BitConverter.IsLittleEndian) { Array.Reverse(g_bytes); Array.Reverse(c_bytes); }
                 string json = JsonConvert.SerializeObject(embed);
                 byte[] embed_bytes = Encoding.UTF8.GetBytes(json);
-                byte[] package = new byte[24 + embed_bytes.Length];
+                int length = 24 + embed_bytes.Length;
+                byte[] package = new byte[4 + length];
+                byte[] l_bytes = BitConverter.GetBytes(length);
 
-                header.CopyTo(package, 0);
-                g_bytes.CopyTo(package, 8);
-                c_bytes.CopyTo(package, 16);
-                embed_bytes.CopyTo(package, 24);
+                l_bytes.CopyTo(package, 0);
+                header.CopyTo(package, 4);
+                g_bytes.CopyTo(package, 12);
+                c_bytes.CopyTo(package, 20);
+                embed_bytes.CopyTo(package, 28);
 
                 NetworkStream stream = tclient.GetStream();
                 stream.Write(package, 0, package.Length);

@@ -10,7 +10,7 @@
     <BaseIntermediateOutputPath></BaseIntermediateOutputPath>
     <UserSecretsId>075d6315-7f84-46b5-b16f-d5454c3fb6de</UserSecretsId>
     <Authors>$(AssemblyName)</Authors>
-    <AssemblyVersion>0.2.0</AssemblyVersion>
+    <AssemblyVersion>0.2.2</AssemblyVersion>
     <AssemblyName>Mage2eCatalog</AssemblyName>
   </PropertyGroup>
 
