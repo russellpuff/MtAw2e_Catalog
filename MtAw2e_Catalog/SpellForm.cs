@@ -194,6 +194,8 @@ namespace MtAw2e_Catalog
             sfAimedOffNumUpDown.Value = currentCharacter.AimedOffense;
             arcanaDots = WhatArcana(spell.Arcana.Substring(1, 4), false);
 
+            sfTimeBottleCheck.Checked = sfEverywhereCheck.Checked = sfPermanenceCheck.Checked = false; // Avoids exploit.
+
             List<CheckBox> rulearc = new()
             {
                 sfDeathRulingCheck, sfFateRulingCheck, sfForcesRulingCheck, sfLifeRulingCheck, sfMatterRulingCheck,
