@@ -17,7 +17,7 @@ namespace MtAw2e_Catalog
         }
     }
 
-    // This class handles sending an EmbedBuilder object to Discord via Naomi Sakamoto.
+    // This class handles sending an EmbedBuilder object to Discord via Nanami Satoko.
     public class EmbedSender : IDisposable
     {
         private readonly EmbedBuilder embed;
@@ -58,7 +58,7 @@ namespace MtAw2e_Catalog
             }
             catch (Exception ex)
             {
-                string msg = $"Unable to send data to Naomi.\nInfo: {ex.Message}";
+                string msg = $"Unable to send data to Nanami.\nInfo: {ex.Message}";
                 MessageBox.Show(msg, "Data send failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             socketClient.Shutdown(SocketShutdown.Both);
