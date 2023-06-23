@@ -139,18 +139,21 @@ namespace MtAw2e_Catalog
                     if (ch == null) { throw new NullReferenceException(); }
                     profiles.Add(ch);
                     sfProfileComboBox.Items.Add(ch.Name);
-                } catch {
+                }
+                catch
+                {
                     string msg = file.ToString() + " was corrupted and could not be loaded.";
                     MessageBox.Show(msg, "Load error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    continue; 
+                    continue;
                 } // Ignore broken file, try the rest. 
-               
+
             }
             if (profiles.Count > 0)
             {
                 currentCharacter = profiles[0];
                 sfProfileComboBox.SelectedIndex = 0;
-            } else
+            }
+            else
             { // No character files or all broken = default character. 
                 currentCharacter ??= new("John Darkfall", 0, 0, 0);
             }
@@ -165,8 +168,9 @@ namespace MtAw2e_Catalog
             foreach (ComboBox y in yan)
             {
                 y.Items.Clear();
-                foreach (Yantra yantra in currentCharacter.Yantras) { 
-                    y.Items.Add(yantra.DisplayName); 
+                foreach (Yantra yantra in currentCharacter.Yantras)
+                {
+                    y.Items.Add(yantra.DisplayName);
                 }
                 foreach (Yantra yantra in defaultYantras)
                 {
@@ -217,7 +221,7 @@ namespace MtAw2e_Catalog
                 sfYantra1ComboBox, sfYantra2ComboBox, sfYantra3ComboBox,
                     sfYantra4ComboBox, sfYantra5ComboBox, sfYantra6ComboBox
             };
-            
+
             int yanmax = (int)Math.Ceiling(currentCharacter.Gnosis / 2F); // Yantra limits
             for (int i = 0; i < 6; ++i) { yan[i].Enabled = i <= yanmax; }
 
@@ -252,10 +256,10 @@ namespace MtAw2e_Catalog
             var chek = rulearc.FindAll(r => r.Checked);
             for (int i = 0; i < 3; ++i)
             { // If fewer than 3 checked boxes, use the default return value (0) in WhatArcana.
-                string bar = chek.Count > i ? chek[i].Name.Substring(2, 4) : "pepis lol"; 
+                string bar = chek.Count > i ? chek[i].Name.Substring(2, 4) : "pepis lol";
                 currentCharacter.RulingArcana[i] = WhatArcana(bar, true);
             }
- 
+
             string path = Application.StartupPath + "/profiles/" + charName.Replace(' ', '_') + ".json";
             if (File.Exists(path)) { File.Delete(path); }
             using (StreamWriter sw = new(path))
@@ -409,7 +413,7 @@ namespace MtAw2e_Catalog
                 sfYantra1ComboBox, sfYantra2ComboBox, sfYantra3ComboBox,
                     sfYantra4ComboBox, sfYantra5ComboBox, sfYantra6ComboBox
                 };
-                foreach(ComboBox y in yan)
+                foreach (ComboBox y in yan)
                 {
                     if (y.SelectedIndex >= 0)
                     {
@@ -490,7 +494,7 @@ namespace MtAw2e_Catalog
         {
             bool containParadox = false;
             DieRoller pairOfDocks = new(paradoxActual, false, 10);
-            Tuple<string, int> paradoxResult = new(pairOfDocks.Roll(), pairOfDocks.successes);            
+            Tuple<string, int> paradoxResult = new(pairOfDocks.Roll(), pairOfDocks.successes);
             // Give user the opportunity to contain a paradox before posting results, since Paradox is always rolled first. 
             if (paradoxResult.Item2 > 0 && paradoxTotal > 0)
             {
@@ -510,10 +514,12 @@ namespace MtAw2e_Catalog
                 DieRoller spl = new(dice, sfRoteCheck.Checked, (10 - sfRollAgainComboBox.SelectedIndex));
 
                 string result = spl.Roll();
-                if ((spl.successes > 3 && sfCastPraxisRadio.Checked) || spl.successes > 5) { 
+                while (spl.successes == 0) { result = spl.Roll(); }
+                if ((spl.successes > 3 && sfCastPraxisRadio.Checked) || spl.successes > 5)
+                {
                     result += "\n\nThe spell was an exceptional success!";
                     result += sfCastPraxisRadio.Checked ? " (Praxis)" : "";
-                } 
+                }
                 else if (spl.successes == 0) { result += "\n\nIt failed."; }
 
                 spellResult.WithDescription(result);
@@ -522,10 +528,11 @@ namespace MtAw2e_Catalog
                 { es.SendEmbed(); }
                 await Task.Delay(1000);
 
-                if (spl.successes > 0) {
+                if (spl.successes > 0)
+                {
                     using (EmbedSender es = new(SendSpellToChat(), server, channel))
                     { es.SendEmbed(); }
-                    await Task.Delay(1000); 
+                    await Task.Delay(1000);
                 }
             }
 
@@ -546,13 +553,15 @@ namespace MtAw2e_Catalog
                 {
                     pResult += "\n\nThe Paradox is fully contained! " + currentCharacter.Name + " takes " +
                         paradoxResult.Item2 + " points of bashing damage.";
-                } else if (cont.successes == 0)
+                }
+                else if (cont.successes == 0)
                 {
                     pResult += "\n\nThe Paradox is not contained.";
-                } else
+                }
+                else
                 {
                     pResult += "\n\nThe Paradox is partially contained. " + currentCharacter.Name + " takes " +
-                        cont.successes + " points of bashing damage and the Storyteller has " + 
+                        cont.successes + " points of bashing damage and the Storyteller has " +
                         (paradoxResult.Item2 - cont.successes) +
                         " successes remaining for Paradox reach.";
                 }
@@ -575,7 +584,7 @@ namespace MtAw2e_Catalog
             EmbedBuilder aimSpell = new();
             aimSpell.WithTitle(title);
             aimSpell.WithDescription(result);
-            aimSpell.WithColor(new Discord.Color(255,255,255));
+            aimSpell.WithColor(new Discord.Color(255, 255, 255));
             SendAimToChat(aimSpell);
 
             return aim.successes > 0;
@@ -667,7 +676,7 @@ namespace MtAw2e_Catalog
                 sfYantra1ComboBox, sfYantra2ComboBox, sfYantra3ComboBox,
                     sfYantra4ComboBox, sfYantra5ComboBox, sfYantra6ComboBox
             };
-            foreach(ComboBox y in yan)
+            foreach (ComboBox y in yan)
             {
                 if (y.SelectedIndex != -1)
                 { ret += "• " + y.Text + "\n"; }
@@ -871,7 +880,8 @@ namespace MtAw2e_Catalog
                 sfMindRulingCheck, sfPrimeRulingCheck, sfSpaceRulingCheck, sfSpiritRulingCheck, sfTimeRulingCheck
             };
             var chek = rulearc.FindAll(a => a.Checked);
-            foreach (CheckBox cb in rulearc) {
+            foreach (CheckBox cb in rulearc)
+            {
                 if (chek.Count == 3) { cb.Enabled = cb.Checked; }
                 else { cb.Enabled = true; }
             }
@@ -884,9 +894,9 @@ namespace MtAw2e_Catalog
         { if (!disableEvents) RefreshLabels(); }
 
         private void LeftSideRadio_CheckedChanged(object sender, EventArgs e)
-        { 
-            if (!disableEvents) 
-            RefreshLabels();
+        {
+            if (!disableEvents)
+                RefreshLabels();
             EnableDisableCastButtons();
         }
 
@@ -931,7 +941,8 @@ namespace MtAw2e_Catalog
         {
             if (disableEvents) { return; }
             ComboBox cb = (ComboBox)sender;
-            if (cb.SelectedItem.ToString() == "-None-") {
+            if (cb.SelectedItem.ToString() == "-None-")
+            {
                 disableEvents = true;
                 cb.SelectedIndex = -1;
                 disableEvents = false;

@@ -32,7 +32,7 @@ namespace CofDDice
             string m = chance ? "Chance die" : "Dice";
             m+= " rolled: [";
 
-            for (int i = 1; i <= dice; i++) { rolls.Add(random.Next(1, 10)); }
+            for (int i = 1; i <= dice; i++) { rolls.Add(random.Next(1, 11)); }
             
             // If a chance die rolls a 1, it does not get rerolled.
             // Chance dice do not benefit from the rollAgain property.
@@ -40,7 +40,7 @@ namespace CofDDice
             {
                 foreach (int r in rolls)
                 {
-                    if (((r >= (int)rollAgain) && !chance) || (rote && (r < 8))) { arolls.Add(random.Next(1, 10)); }
+                    if (((r >= (int)rollAgain) && !chance) || (rote && (r < 8))) { arolls.Add(random.Next(1, 11)); }
                 }
                 rolls.AddRange(arolls); // Can't edit rolls in a foreach.
             }
