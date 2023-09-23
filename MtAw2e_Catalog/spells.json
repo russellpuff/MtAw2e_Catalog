@@ -1,0 +1,413 @@
+[
+  {
+    "Name": "Block Restoration",
+    "Arcana": "(Death •• + Fate ••)",
+    "Description": "Through this spell, once a subject has been consigned to irrelevancy, it cannot be restored or brought back for the duration of this spell as fate simply does not will it. A corpse cannot be revived, a totaled car cannot be rebuilt, if a subject is fired from their job, nothing they do will allow them to be rehired. This spell does not block alternative avenues, such as a fired subject getting a new job somewhere else. Any sort of loss, defeat, or elimination be it real or symbolic is a valid target for this spell. Magic attempts to restore the subject’s relevancy provoke a Class of Wills. ",
+    "Practice": "Ruling",
+    "PrimaryFactor": "Duration",
+    "Withstand": "Resolve",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "11aa8917-12f6-42e8-878a-1a0d2bbf79b9"
+  },
+  {
+    "Name": "Slow Death",
+    "Arcana": "(Death ••)",
+    "Description": "The mage targets a subject currently suffering a form of decay due to an injury. For each level of potency, the subject’s rate of blood loss, cell decay, organ failure, or any other condition that will lead to the subject’s imminent death within short period of time is slowed by a factor of half. This spell also affects the rate at which a character with lethal damage in their rightmost Health box accumulates aggravated damage.",
+    "Practice": "Ruling",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "08ff8ea4-3213-4202-99fe-fa8b6eeb5784"
+  },
+  {
+    "Name": "Revivify",
+    "Arcana": "(Death ••• + Fate •••)",
+    "Description": "A Sacrament yantra worth at least +2 dice must be used in the casting of this spell. The mage touches a subject who died in the last 30 seconds and recaptures their soul before it can leave their body permanently. The mage strengthens the remaining threads of the subject’s life force, allowing them to “live” in stasis for the Duration of this spell. They will not naturally heal; however they can still be healed by spells and powers that can heal Aggravated damage. Upon healing at least one point of aggravated damage, the subject wakes up.\r\nIf the subject does not receive any healing before the spell ends, the subject’s soul escapes.  \r\nThe experience is greatly taxing to the subject, upon waking up, they suffer a -3 modifier to all dice pools until their next full night’s rest. ",
+    "Practice": "Perfecting",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Subject Willpower",
+    "Cost": "3 Mana",
+    "AddOns": [],
+    "guid": "4da018df-0544-4a8e-81fe-bc51bd809d8f"
+  },
+  {
+    "Name": "Blink",
+    "Arcana": "(Death ••••)",
+    "Description": "For the duration of the spell, the mage rolls 2 dice at the end of each of their turns. With at least 1 success, they vanish into the Twilight. At the start of their next turn, if they are still in the Twilight, they reappear in the nearest unoccupied space in the Material. \r\nWhile in the Twilight, the subject is Death-attuned and can only interact with Ghosts and Death-attuned objects in the Twilight. While their view distance is limited, and Material objects and creatures appear pale and translucent, the mage can still make out what is occurring nearby in the Material. ",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "Substitute Spirit ••••",
+        "Effect": "The mage instead uses this spell to cause their Twilight form to be Spirit-attuned and can instead only interact with Spirits and Spirit-attuned objects. "
+      }
+    ],
+    "guid": "91b2bd2a-2432-4054-a02c-9781f858d368"
+  },
+  {
+    "Name": "Mask of Night and Day",
+    "Arcana": "(Death ••••• + Fate ••••)",
+    "Description": "The mage chooses exactly two subjects, one Awakened and one Kindred, and rips out both of their souls. The mage can either switch the two souls immediately, or place one of them in a Soul Jar for later restoration and only transplant the other.\r\nUpon having the Kindred soul placed inside of the Awakened subject, they enter a state of being half-Awakened, half-Kindred. Their Gnosis drops to 0 and the subject suffers from the Kindred daysleep trait, forcing them into a slumber during the day and rousing them when the sun sets. However, during this period, the subject appears as if they are both Awakened and Kindred to supernatural scrutiny, similar to the Tremere clan. Any supernatural scrutiny capable of identifying specific bloodlines prompts a Clash of Wills, if the mage loses, the scrutiny reveals the bloodline the Kindred soul belongs to.  \r\nAfter the spell is cast, the Awakened subject slowly regains one dot of Gnosis every two days. If the spell ends before the subject's Gnosis is fully restored, it continues to regenerate but the Spell's veiling effects end. Upon reaching their original Gnosis value, the veiling effects end. \r\nA Kindred subject with an Awakened soul registers similarly to scrutiny, and their Blood Potency drops to 0, gaining traits similar to Kindred of weaker blood, granting them the ability to wake sooner, and sleep later. They regain Blood Potency at the same rate as an Awakened subject recovers Gnosis, and suffer the same veiling restrictions. \r\nIf one of the subjects fully regains their Supernatural Tolerance, the soul within them is fully converted to their supernatural template, and must be transplanted back and left to ferment in order to restore it to its original state. After this occurs, the subject loses their daysleep-related traits granted by the spell.",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Resolve",
+    "Cost": "9 + Wisdom + Humanity Mana",
+    "AddOns": [],
+    "guid": "8dcb3749-4170-42f1-ac49-3503bd3faa26"
+  },
+  {
+    "Name": "Outlaw Brand",
+    "Arcana": "(Fate •••)",
+    "Description": "When this spell is cast, the mage chooses one promise the subject has made, or law to which he is subject. For the spell’s duration, the subject is treated as though he had broken the stipulated promise or law. This does not fabricate evidence of crimes, but supernatural consequences, people involved in a promise, and bureaucratic systems will treat him appropriately which may even impose Conditions such as Notoriety or Hunted. This spell works on supernaturally sealed promises as well, and for the duration of the spell the subject suffers the drawbacks for transgression. ",
+    "Practice": "Fraying",
+    "PrimaryFactor": "Duration",
+    "Withstand": "Composure",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+2 Reach and 1 Mana",
+        "Effect": "The spell's effects are Lasting."
+      }
+    ],
+    "guid": "3e785e73-d6e8-4e31-aea5-9c0940bfaeae"
+  },
+  {
+    "Name": "Warding Bond",
+    "Arcana": "(Fate •••)",
+    "Description": "The mage targets a willing subject and links their fate together. The subject gains +1 to their Defense, all Withstand, and Clash of Wills for the spell’s duration. Whenever the subject takes damage, the damage is split, causing the mage and subject to each take half. One point of aggravated damage is split into two points of lethal, and one point of lethal damage is split into two points of bashing damage. Damage is only split and downgraded if a single point needs to be divided between the mage and subject, if a point of bashing damage needs to be split, the subject takes it but not the mage. \r\nThe duo in a pair can only benefit from this spell once, and cannot be bonded with a second person. The Scale factor of the spell determines how close together the pair must remain for the duration of the spell, being separated ends it immediately. ",
+    "Practice": "Weaving",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "1 Mana",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "This spell may affect a pair that does not include the casting mage, both subjects must be willing. The mage determines which subject gains the dice bonus and takes a point of bashing damage when one is left over."
+      },
+      {
+        "Requirement": "+2 Reach",
+        "Effect": "Pairs do not need to remain within the Scale’s distance from each other and may benefit from the spell regardless of how far apart from each other they are. "
+      }
+    ],
+    "guid": "6f44edfc-d523-43e1-9398-183922770126"
+  },
+  {
+    "Name": "Gust",
+    "Arcana": "(Forces •)",
+    "Description": "The mage compels a small gust of wind to cause a minor effect, such as causing leaves to rustle, wind to slam shutters or an unpropped door shut, etc. \r\nAlternatively, a small unsecured object can be pushed a number of feet away based on (Potency x 5). ",
+    "Practice": "Compelling",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "A target running faster than walking pace can be struck with a gust of wind causing them to fall prone. In this case, the spell targets the Withstand trait of Dexterity. "
+      }
+    ],
+    "guid": "557139e3-93ff-42a2-8099-45138f04ec02"
+  },
+  {
+    "Name": "Capture Energy",
+    "Arcana": "(Forces •••)",
+    "Description": "The mage captures a small portion of an active source of energy (electricity from an outlet, fire from a torch, direct sunlight, etc.) and contains it in a small container. If pointed at a target within close combat range, and the container is opened again, the target suffers the effects of being affected by the energy for a full turn. The Potency of the effect determines how much energy may be contained (as per the chart under Transform Energy) and each discharge reduces the remaining Potency of the effect by one. Containers that are transparent may radiate light or color based on the energy stored within, but no creature suffers the effects of this radiated light. If the spell’s duration expires before the stored energy is used, the energy will dissipate in a natural way (fire will snuff out, electricity will discharge, sunlight will leak out, etc.).",
+    "Practice": "Weaving",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "The container can affect targets at longer ranges based on (Potency x 5). "
+      },
+      {
+        "Requirement": "+2 Reach",
+        "Effect": "The container may be thrown; it has range bands of (Potency x 5 / Potency x10 / Potency x15) and is aimed with Dexterity + Athletics – The target’s Defense. Regardless of whether the throw is successful, the container shatters regardless of the material it was made of, and releases all of its stored energy within close combat range of the impact point. A successful throw strikes the target, dealing additional bashing damage on hit. A Dramatic Failure causes the container to land somewhere where the resulting effect does not affect the intended target. "
+      }
+    ],
+    "guid": "e3b02a1b-f9f8-4c09-bdbc-f44b0bf5a7ed"
+  },
+  {
+    "Name": "Faerie Fire",
+    "Arcana": "(Forces •••)",
+    "Description": "The mage takes an existing source of light and distorts it to outline subjects in a blue, green, or violet light outline. The spell’s Scale factor must include a suitable light source, and all subjects are struck with the outline. Subjects may not benefit from being invisible while outlined, and any attempts to touch, strike, or shoot the subject gains a dice bonus equal to Potency, up to a maximum of +5. \r\nIf the subject is veiled supernaturally in some fashion aside from invisibility, this spell allows mundane attempts at detection to enter a Clash of Wills to detect the subject using the casting mage’s Gnosis + Forces as the dice pool.  ",
+    "Practice": "Weaving",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Dexterity",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "Substitute Forces ••••",
+        "Effect": "The spell does not need an existing light source."
+      }
+    ],
+    "guid": "6c5652c5-a58c-4d35-8aa8-e2aaf71ce1b0"
+  },
+  {
+    "Name": "Sunstone",
+    "Arcana": "(Forces •••)",
+    "Description": "The mage can shape and harden sunlight into solid, three-dimensional forms. Sunstone objects have a Durability of 2, and a Weapon Rating/General Armor Rating/Equipment Bonus of 1. Using an appropriate Wits + Crafts roll, Sunstone can be shaped into particularly intricate shapes, allowing for a higher equipment bonus at the Storyteller’s discretion. Sunstone reflects all forms of light incredibly brightly, appearing to radiate in even dimly lit rooms, but does not actually emit light on its own and provides no illumination. Sunstone counts as real sunlight for all relevant purposes. ",
+    "Practice": "Weaving",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "8cbe26f9-55d2-4593-ab8a-376d9fb2b567"
+  },
+  {
+    "Name": "Death Ward",
+    "Arcana": "(Life •• + Fate ••)",
+    "Description": "The subject is granted a measure of protection from death. The first time their health track’s rightmost health box fills with Aggravated damage, the final point of Aggravated damage is nullified before the subject dies, and the spell ends immediately. \r\nIf the spell is still in effect and the subject is targeted with a power that instantly kills them without dealing damage, the effect is instead negated against the target entirely, and the spell ends. ",
+    "Practice": "Shielding",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "1 Mana",
+    "AddOns": [],
+    "guid": "187d06da-a576-4207-a3d1-07dd66e31ddc"
+  },
+  {
+    "Name": "Sleep",
+    "Arcana": "(Life •••)",
+    "Description": "The mage induces fatigue into the subject, degrading their form until they are incapable of staying conscious. The subject remains asleep for the Duration of the spell. \r\nA subject who sleeps for at least 6 hours this way regains a point of Willpower upon waking up. \r\nUnder the effects of this spell, the subject is effectively comatose, and cannot be woken up nonmagically. Extended Duration on the spell causes the same consequences to the subject’s body as a real coma would.",
+    "Practice": "Fraying",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Stamina",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "The subject’s body does not suffer negative effects from being comatose, regardless of how long they sleep."
+      }
+    ],
+    "guid": "4bb03f70-1d9e-45ac-8940-f1f4cdfc4724"
+  },
+  {
+    "Name": "Blueprint",
+    "Arcana": "(Matter •)",
+    "Description": "The mage studies a relatively simple object to discern its composition and how to recreate it. After a successful Intelligence + Crafts roll, the mage obtains a Supernal \"blueprint\" of the object that can be used in the \"Craft\" spell to modify or recreate the object. The mage is capable of memorizing an indefinite number of blueprints, and any supernatural attempt to cause the mage to forget any of them prompts a Clash of Wills. ",
+    "Practice": "Knowing",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "The mage may study more complicated objects, including electronic devices. The Intelligence + Crafts roll is penalized based on the complexity of the object."
+      }
+    ],
+    "guid": "2c986ef4-0aa3-4af9-b829-9dda651b1bb0"
+  },
+  {
+    "Name": "Jam",
+    "Arcana": "(Matter •)",
+    "Description": "The mage targets a mechanical object and forces it to fail in performing its intended function. A gun will not fire, a car will not start, etc. Mundane attempts to discern the cause of the failure do not reveal anything notable. ",
+    "Practice": "Compelling",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach and Add Matter ••",
+        "Effect": "The object takes on a physical property that justifies its failure, a gun’s hammer may appear irreparably damaged, a car’s spark plugs may appear burnt out, etc. The use of Matter Sight will reveal the illusion for what it truly is, but other attempts to magically discern the cause of the failure provoke a Clash of Wills. Attempts to repair the illusory damage do not allow the object to function again so long as this spell is active. "
+      }
+    ],
+    "guid": "25c981c2-75fe-4d2a-b396-b8747ce321fd"
+  },
+  {
+    "Name": "Grease",
+    "Arcana": "(Matter ••)",
+    "Description": "The mage targets an object and reduces its friction coefficient. For each level of potency it reduces the coefficient by 20% additively.",
+    "Practice": "Ruling",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "1ef84d70-19ba-48c6-9a89-401888d6fc12"
+  },
+  {
+    "Name": "Dragon’s Breath",
+    "Arcana": "(Matter ••• + Forces •••)",
+    "Description": "The mage enchants existing incendiary ammunition or explosives to Perfect its burn. A subject enchanted this way gains the properties of Perfected fire, any fire damage done as a part of the ammunition or explosive’s total damage is Aggravated, does damage as though it were one size higher, and bypasses armor entirely. The number of bullets, shells, grenades, and other individual items that can be enchanted by this spell at once is equal to the maximum number of subjects in the spell’s Scale factor times the Potency of the spell. ",
+    "Practice": "Perfecting",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "1 Mana",
+    "AddOns": [],
+    "guid": "ec29a93a-330c-421f-9afb-75e610319380"
+  },
+  {
+    "Name": "Near-Shift",
+    "Arcana": "(Matter •••)",
+    "Description": "A substance targeted by this spell is transferred into another, but related substance. Water can be turned to wine, copper can be turned to gold, etc.",
+    "Practice": "Weaving",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "8171dd02-d869-4aeb-920b-e7c2470b0bb2"
+  },
+  {
+    "Name": "Craft",
+    "Arcana": "(Matter ••••)",
+    "Description": "The mage utilizes a Supernal blueprint obtained with the \"Blueprint\" spell to create a duplicate of the object, or modify an existing object that matches the blueprint. \r\nIf an object is being created, the mage must have sufficient raw material present in the casting of the spell to recreate the object. The mage is automatically aware of what materials are required to create the object, and whether or not the materials they have on hand are a sufficient replacement. \r\nIf an object is being modified, the mage utilizes a replacement material to swap out components of the object 1:1 without changing its overall shape or functionality. A car with a cheap aluminum chassis can have it swapped with high quality carbon fiber, provided the mage has sufficient quantities of carbon fiber present when casting the spell. \r\nIf an object is modified significantly such that it deviates from its original blueprint in terms of structure and functionality, this spell fails and the object must be studied again. When the spell's duration expires, all materials used in the casting of this spell collapse into their raw component forms. ",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "1 Mana",
+    "AddOns": [
+      {
+        "Requirement": "+2 Reach",
+        "Effect": "The spell's effects are Lasting."
+      }
+    ],
+    "guid": "b203a771-29f1-466a-a858-8daf55e7b0d5"
+  },
+  {
+    "Name": "Disassemble",
+    "Arcana": "(Matter ••••)",
+    "Description": "The mage targets a number of mechanical objects based on the spell's Scale factor, those objects are reduced to their component parts, which appear in an unoccupied space near the original object. Immediately after this, gravity will take over and the components will fall to the ground, rendering the object useless unless rebuilt. This does not destroy objects. This spell is Lasting.",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "ac057212-9420-48a4-a527-0a6ed225d40c"
+  },
+  {
+    "Name": "Forcefeed",
+    "Arcana": "(Matter ••••)",
+    "Description": "The mage forces a pint of blood, either from an open wound or a container, to enter the mouth of a subject vampire, forcing them to consume the blood. The subject gains a point of Vitae, and suffers any deleterious effects from contaminants in the blood. The blood used in this spell must be less than 24 hours old.\r\nIf the subject is currently subject to Frenzy, the spell ignores any Withstand and takes effect at full potency.",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Stamina",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "b8389914-03bf-422c-906a-c6054857f356"
+  },
+  {
+    "Name": "General Anesthesia",
+    "Arcana": "(Matter ••••)",
+    "Description": "The mage patterns the air a subject breathes into a potent anesthetic gas that, once breathed in, puts the subject to sleep within seconds. The subject remains asleep for a number of hours equal to Potency and cannot be woken up nonmagically.",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Potency",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "The subject’s airways are restricted by the anesthetic, causing them to suffocate and inevitably die if not provided medical assistance."
+      }
+    ],
+    "guid": "1145a1e5-9ca5-4950-96cd-fcb2c494c78f"
+  },
+  {
+    "Name": "Invulnerability",
+    "Arcana": "(Matter •••••)",
+    "Description": "The mage must employ a Sacrament yantra worth at least +3 dice in the casting of the spell. For the duration of the spell, the mage is immune to all forms of physical damage, this includes anything under Matter’s purview, such as caustic substances or toxic gas. \r\n\r\nAdd Life •••••: The mage is immune to all indirect damage from powers that warp their body.\r\nAdd Forces •••••: The mage is immune to damage from energy. \r\nAdd Mind •••••: The mage is immune to psychic and mental damage.\r\nAdd Prime •••••: The mage is immune to damage to their Pattern. This does not make them immune to self-inflicted damage through scouring. \r\nAdd Spirit •••••: The mage is immune to indirect damage dealt by Ephemeral entities. This does not make them immune to damage dealt by Abyssal entities. ",
+    "Practice": "Making",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "5 Mana",
+    "AddOns": [],
+    "guid": "caac50f5-e653-4366-b480-550466a9c200"
+  },
+  {
+    "Name": "Hypnotic Pattern",
+    "Arcana": "(Mind •••• + Forces ••)",
+    "Description": "The mage creates a twisting pattern of colors that weaves through the air inside the spell’s Scale factor. The mage must include a suitable light source within the Scale of this spell. The pattern appears for a moment and vanishes, each subject who sees the pattern suffers the Stunned Tilt until the end of their next turn. ",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Resolve or Composure",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "Subjects are Stunned for the entire duration of this spell, up to a maximum duration of 1 Scene. "
+      },
+      {
+        "Requirement": "Add Forces ••••",
+        "Effect": "The spell does not require an existing light source."
+      }
+    ],
+    "guid": "3128aac2-4286-45cb-87c6-cfaf0c73d28f"
+  },
+  {
+    "Name": "Mind Blank",
+    "Arcana": "(Mind •••••)",
+    "Description": "The mage inures themselves against all forms of psychic interference. All active or passive attempts to sense the mage’s emotions or read their thoughts automatically fail. Any powers that alter the mage’s mind through charm, enchantment, domination, or other similar methods automatically fail if the dot level of the power is lower than 5. At 5 dots, the power provokes a Clash of Wills against the mage (if it didn’t already), and the mage gains the rote quality on their roll. ",
+    "Practice": "Unmaking",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "1 Mana",
+    "AddOns": [
+      {
+        "Requirement": "Add Space •••••",
+        "Effect": "The mage is immune to scrying attempts and spells cast on them Sympathetically prompt a Clash of Wills. "
+      }
+    ],
+    "guid": "dc3e8340-c4ee-4dce-83cd-bbafc76659d1"
+  },
+  {
+    "Name": "Zone of Truth",
+    "Arcana": "(Prime ••)",
+    "Description": "The mage creates an area that guards against deception, anyone who enters the spell’s area of effect and fails to Withstand becomes a subject. Any words spoken out loud by a subject is automatically translated into High Speech for those who understand it (this does not grant them the ability to understand the subject if they do not understand the language spoken by the subject without this spell). Those who do not understand High Speech do not hear anything unusual about this speech. \r\nIf a subject consciously lies while under the effects of this spell, the High Speech translation sounds like complete gibberish to any who understand High Speech. ",
+    "Practice": "Ruling",
+    "PrimaryFactor": "Duration",
+    "Withstand": "Composure",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach and 1 Mana",
+        "Effect": "When a subject speaks a lie, their lie is instead reverted back into their plain Fallen language. "
+      }
+    ],
+    "guid": "f4db9680-12ed-48f6-ac05-4761aa093b81"
+  },
+  {
+    "Name": "Soliton Radar",
+    "Arcana": "(Space • + Mind •)",
+    "Description": "The mage grants their subject the ability to track the location and general awareness of all thinking creatures within the spell's Scale factor. The subject automatically knows where they are, where they're looking, and how attentive they are, including their field of vision. The subject gains a bonus to Stealth rolls made to avoid the target's line of sight equal to the spell's Potency. ",
+    "Practice": "Knowing",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "The Scale factor of the spell centers on the subject, and \"follows\" them as they move around."
+      }
+    ],
+    "guid": "5a0d8267-ab8f-4ad2-a115-7218a6740af9"
+  },
+  {
+    "Name": "Lock Portal",
+    "Arcana": "(Space •••)",
+    "Description": "Where a mundane or magic portal, Iris, is already established, this spell makes passage through it impossible for the duration. Doors will lock and become unable to be unlocked, passcodes fail, trails end. Archways and otherwise open portals will “brick up” as the material around the space fills the area. ",
+    "Practice": "Fraying",
+    "PrimaryFactor": "Duration",
+    "Withstand": "",
+    "Cost": "",
+    "AddOns": [
+      {
+        "Requirement": "+1 Reach",
+        "Effect": "The sympathetic connections of the portal are likewise suppressed. People conveniently forget the passageway in favor of other means, or know the area beyond but can't remember how to get there. Magic attempts to bypass the portal provoke a Clash of Wills. "
+      }
+    ],
+    "guid": "ec31f353-4556-46fb-96e1-0d8b0b37df5f"
+  },
+  {
+    "Name": "Scatter",
+    "Arcana": "(Space ••••)",
+    "Description": "The mage targets a maximum number of subjects based on the spell’s Scale factor and rearranges their location in Space, the destination for each subject must be within the spell’s area of effect. The mage determines the exact destination space for each subject. That space must be on the ground, and unoccupied.  ",
+    "Practice": "Patterning",
+    "PrimaryFactor": "Potency",
+    "Withstand": "Stamina",
+    "Cost": "",
+    "AddOns": [],
+    "guid": "85fdd54f-af33-4319-936b-940f8169f824"
+  }
+]
